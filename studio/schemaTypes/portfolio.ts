@@ -2,32 +2,54 @@ import {defineField, defineType} from 'sanity'
 import {mediaAssetSource} from 'sanity-plugin-media'
 
 export default defineType({
-  name: 'post',
-  title: 'Blog',
+  name: 'portfolio',
+  title: 'Portfolio',
   type: 'document',
   fields: [
     defineField({
       name: 'title',
-      title: 'Header',
+      title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'subtitle',
-      title: 'Subheader',
-      type: 'string',
+      name: 'worktype',
+      title: 'Category',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'portfoliotag'}}],
+    }),
+    defineField({
+      name: 'images',
+      type: 'array',
+      title: 'Images of Work',
+      of: [
+        {
+          name: 'image',
+          type: 'image',
+          title: 'Image',
+          options: {
+            sources: [mediaAssetSource],
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Caption',
+            },
+          ],
+        },
+      ],
+      options: {
+        layout: 'grid',
+      },
     }),
     defineField({
       name: 'body',
-      title: 'Body',
+      title: 'Write Up',
       type: 'blockContent',
     }),
-    defineField({
-      name: 'mainImage',
-      title: 'Thumbnail',
-      type: 'image',
-      options: {sources: [mediaAssetSource], hotspot: true},
-    }),
+
     defineField({
       name: 'credits',
       title: 'Credits',
@@ -35,15 +57,11 @@ export default defineType({
       of: [{type: 'reference', to: {type: 'author'}}],
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: 'categories',
-      title: 'Tags',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'blogtag'}}],
-    }),
+
     defineField({
       name: 'slug',
-      title: 'Slug',
+      title: 'URL',
+      description: 'oel.com/work/...',
       type: 'slug',
       options: {
         source: 'title',

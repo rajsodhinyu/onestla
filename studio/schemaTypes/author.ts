@@ -2,49 +2,36 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'author',
-  title: 'Author',
+  title: 'Credit',
   type: 'document',
   fields: [
+    defineField({
+      name: 'role',
+      title: 'Role',
+      description: 'Only reuse a credit if it is the same person doing the same thing!',
+      type: 'string',
+    }),
     defineField({
       name: 'name',
       title: 'Name',
       type: 'string',
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'name',
-        maxLength: 96,
-      },
-    }),
-    defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: 'bio',
-      title: 'Bio',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
-        },
-      ],
+      name: 'link',
+      title: 'Link',
+      type: 'url',
     }),
   ],
   preview: {
     select: {
-      title: 'name',
-      media: 'image',
+      role: 'role',
+      name: 'name',
+    },
+    prepare(selection) {
+      const {role, name} = selection
+      return {
+        title: `${role}: ${name}`,
+      }
     },
   },
 })
