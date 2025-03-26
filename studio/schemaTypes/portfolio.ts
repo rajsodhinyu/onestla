@@ -13,11 +13,18 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'mainImage',
+      title: 'Header Image',
+      type: 'image',
+      options: {sources: [mediaAssetSource], hotspot: true},
+    }),
+    defineField({
       name: 'worktype',
-      title: 'Category',
+      title: 'Portfolio Category',
       type: 'array',
       of: [{type: 'reference', to: {type: 'portfoliotag'}}],
     }),
+
     defineField({
       name: 'images',
       type: 'array',
@@ -45,6 +52,15 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'slideshow_bool',
+      title: 'Check to show as Slideshow instead of Grid',
+      type: 'boolean',
+      options: {
+        layout: 'checkbox',
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'body',
       title: 'Write Up',
       type: 'blockContent',
@@ -61,7 +77,7 @@ export default defineType({
     defineField({
       name: 'slug',
       title: 'URL',
-      description: 'oel.com/work/...',
+      description: 'site.com/work/...',
       type: 'slug',
       options: {
         source: 'title',
@@ -77,7 +93,9 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
   ],
-
+  initialValue: {
+    slideshow_bool: false,
+  },
   preview: {
     select: {
       title: 'title',

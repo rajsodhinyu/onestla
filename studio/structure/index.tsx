@@ -10,5 +10,5 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem('portfolio').title('Portfolio').icon(FaMap),
       S.divider(),
       S.documentTypeListItem('author').title('Credits').icon(FaHeadSideVirus),
-      S.documentTypeListItem('blogtag').title('Tags').icon(FaTag),
+      S.documentTypeListItem('blogtag').title('Categories and Tags').icon(FaTag),
     ])

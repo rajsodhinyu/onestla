@@ -15,18 +15,27 @@ export default defineType({
     defineField({
       name: 'subtitle',
       title: 'Subheader',
-      type: 'string',
-    }),
-    defineField({
-      name: 'body',
-      title: 'Body',
+      description: 'Small intro/lede/scene setting. No images please.',
       type: 'blockContent',
+    }),
+
+    defineField({
+      name: 'bigtag',
+      title: 'Category',
+      description: 'This tag will be visible above the heading',
+      type: 'reference',
+      to: {type: 'blogtag'},
     }),
     defineField({
       name: 'mainImage',
       title: 'Thumbnail',
       type: 'image',
       options: {sources: [mediaAssetSource], hotspot: true},
+    }),
+    defineField({
+      name: 'body',
+      title: 'Body',
+      type: 'blockContent',
     }),
     defineField({
       name: 'credits',
@@ -36,14 +45,42 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'categories',
-      title: 'Tags',
+      name: 'slideshow',
+      type: 'array',
+      title: 'Slideshow',
+      of: [
+        {
+          name: 'image',
+          type: 'image',
+          title: 'Image',
+          options: {
+            sources: [mediaAssetSource],
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Caption',
+            },
+          ],
+        },
+      ],
+      options: {
+        layout: 'grid',
+      },
+    }),
+    defineField({
+      name: 'smalltag',
+      title: 'Other tags',
+      description: 'these tags will be at the bottom of the article',
       type: 'array',
       of: [{type: 'reference', to: {type: 'blogtag'}}],
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
+      description: 'site.com/blog/...',
       type: 'slug',
       options: {
         source: 'title',
