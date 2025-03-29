@@ -25,12 +25,14 @@ export default defineType({
       description: 'This tag will be visible above the heading',
       type: 'reference',
       to: {type: 'blogtag'},
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'mainImage',
       title: 'Thumbnail',
       type: 'image',
       options: {sources: [mediaAssetSource], hotspot: true},
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'body',
@@ -79,20 +81,23 @@ export default defineType({
     }),
     defineField({
       name: 'slug',
-      title: 'Slug',
-      description: 'site.com/blog/...',
+      title: 'Slug (must be unique)',
+      description: 'onestla.co/blog/...',
       type: 'slug',
       options: {
         source: 'title',
-        maxLength: 96,
+        maxLength: 30,
       },
       validation: (rule) => rule.required(),
     }),
 
     defineField({
       name: 'publishedAt',
-      title: 'Date',
+      title: 'Publish date',
       type: 'date',
+      options: {
+        dateFormat: 'D MMMM YYYY',
+      },
       validation: (rule) => rule.required(),
     }),
   ],

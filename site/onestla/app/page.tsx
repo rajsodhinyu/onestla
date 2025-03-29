@@ -9,7 +9,7 @@ export default function Home() {
           <Link href={"blog"}>blog</Link>
         </div>
         <div>
-          <Link href={"portfolio"}>portfolio</Link>
+          <Link href={"work"}>work</Link>
         </div>
       </div>
     </div>

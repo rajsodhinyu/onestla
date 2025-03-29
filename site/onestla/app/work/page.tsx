@@ -9,7 +9,7 @@ export default function Home() {
           <Link href={"/"}>home</Link>
         </div>
         <div>
-          <Link href={"/blog/slug"}>slug</Link>
+          <Link href={"/work/slug"}>slug</Link>
         </div>
       </div>
     </div>

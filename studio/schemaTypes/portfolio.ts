@@ -77,7 +77,7 @@ export default defineType({
     defineField({
       name: 'slug',
       title: 'URL',
-      description: 'site.com/work/...',
+      description: 'onestla.co/work/...',
       type: 'slug',
       options: {
         source: 'title',
@@ -90,6 +90,16 @@ export default defineType({
       name: 'publishedAt',
       title: 'Date',
       type: 'date',
+      options: {
+        dateFormat: 'D MMMM YYYY',
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'stamp',
+      title: 'Stamp',
+      type: 'image',
+      options: {sources: [mediaAssetSource], hotspot: true},
       validation: (rule) => rule.required(),
     }),
   ],
