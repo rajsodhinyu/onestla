@@ -20,7 +20,7 @@
 }
 
 body {
-    background: var(--background);
+    background: url("https://cdn.sanity.io/images/3r2xt54q/production/6bb4b5791495fb031cecf4b1ff37f80d08239c6f-1816x1948.png");
     color: var(--foreground);
     font-family: Arial, Helvetica, sans-serif;
 }

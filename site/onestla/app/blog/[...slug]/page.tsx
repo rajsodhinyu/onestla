@@ -1,7 +1,7 @@
-export default function Home() {
+export default function Page() {
   return (
     <div>
-      <div className="min-h-screen flex justify-center items-center flex-col">
+      <div className=" flex justify-center items-center flex-col">
         <div className="">generic blog page</div>
       </div>
     </div>

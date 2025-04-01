@@ -1,16 +1,18 @@
-import Link from "next/link";
+import Polaroid from "@/components/polaroid";
 
-export default function Home() {
+export default function Page() {
   return (
     <div>
-      <div className="min-h-screen flex justify-center items-center flex-col">
-        <h2>blog-picker </h2>
-        <div className="">
-          <Link href={"/"}>home</Link>
-        </div>
-        <div>
-          <Link href={"/blog/slug"}>slug</Link>
-        </div>
+      <div
+        className="grid grid-cols-1 justify-items-center mx-12 gap-4
+        sm:grid-cols-2
+        md:grid-cols-3
+        lg:grid-cols-4
+        xl:grid-cols-5"
+      >
+        <Polaroid />
+        <Polaroid />
+        <Polaroid />
       </div>
     </div>
   );
