@@ -1,8 +1,25 @@
 import Polaroid from "@/components/polaroid";
+import { client, sanityFetch } from "@/sanity/lib/client";
+import { SanityDocument } from "next-sanity";
+import imageUrlBuilder from "@sanity/image-url";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
-export default function Page() {
+const builder = imageUrlBuilder(client);
+
+function urlFor(source: SanityImageSource) {
+  return builder.image(source);
+}
+
+export default async function Page() {
+  const BLOG_Q = `
+    *[_type == "post"] {
+          _id, title, mainImage, bigtag->{title}
+        }`;
+  const posts = await sanityFetch<SanityDocument[]>({ query: BLOG_Q });
+
   return (
     <div>
+      <h2 className="text-center">On Est Là Blog</h2>
       <div
         className="grid grid-cols-1 justify-items-center mx-12 gap-4
         sm:grid-cols-2
@@ -10,9 +27,21 @@ export default function Page() {
         lg:grid-cols-4
         xl:grid-cols-5"
       >
-        <Polaroid />
-        <Polaroid />
-        <Polaroid />
+        {posts.map((post) => {
+          // Add null check for mainImage
+          const imageUrl = post.mainImage
+            ? urlFor(post.mainImage).width(400).height(500).url()
+            : "";
+
+          return (
+            <Polaroid
+              key={post._id}
+              title={post.title}
+              image={imageUrl}
+              category={post.bigtag.title}
+            />
+          );
+        })}
       </div>
     </div>
   );

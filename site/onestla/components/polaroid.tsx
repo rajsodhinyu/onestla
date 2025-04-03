@@ -1,7 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
+interface PolaroidProps {
+  title: string;
+  image: string;
+  category: string;
+}
 
-export default function Polaroid() {
+export default function Polaroid({ title, image, category }: PolaroidProps) {
+  console.log("new polaroid");
+  console.log(image);
   return (
     <div className="relative ">
       <Link href={"/work/slug"}>
@@ -13,12 +20,7 @@ export default function Polaroid() {
           alt="test"
         />
         <div className="bg-indigo-500 bg-clip-content p-3">
-          <Image
-            src="https://cdn.sanity.io/images/3r2xt54q/production/0af5893142842bb895daa353818fd2b6b95ed17a-4498x5622.jpg"
-            width={735}
-            height={893}
-            alt="test"
-          />
+          <Image src={image} width={400} height={500} alt="test" />
         </div>
       </Link>
       <div
@@ -30,7 +32,7 @@ export default function Polaroid() {
         xl:bottom-1/12
         "
       >
-        Title
+        {title}
       </div>
       <div
         className="absolute z-30 top-0.5 left-3 text-center text-black
@@ -41,7 +43,7 @@ export default function Polaroid() {
         xl:
         "
       >
-        FASHION
+        {category}
       </div>
     </div>
   );
