@@ -14,8 +14,8 @@ export default function Polaroid({
   category,
   link,
 }: PolaroidProps) {
-  console.log("new polaroid");
-  console.log(image);
+  // console.log("new polaroid");
+  // console.log(image);
   return (
     <div className="relative ">
       <Link href={`/blog/${link}`}>
@@ -31,18 +31,20 @@ export default function Polaroid({
         </div>
       </Link>
       <div
-        className="absolute z-30 inset-x-0 text-center text-black
-        bottom-1/12 w-full text-2xl border-red px-5 font-[Caveat] font-bold
-        sm:bottom-1/17
-        md:bottom-1/20
-        lg:text-xl lg:bottom-1/17
-        2xl:bottom-1/20 "
+        className="absolute z-30 inset-x-0 text-black
+         w-full border-red px-5 font-[Caveat] font-bold
+        bottom-[4%]
+        text-justify
+        text-3xl
+        sm:text-2xl
+        md:text-xl
+        2xl:text-2xl"
       >
         {title}
       </div>
       <div
         className="absolute z-30 top-0.5 left-3 text-center text-black
-         w-1/6 text-xs
+         w-1/6 text-xs font-[Caveat] font-bold
         sm:
         md:
         lg:

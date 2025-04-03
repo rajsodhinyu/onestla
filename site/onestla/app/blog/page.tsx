@@ -1,8 +1,9 @@
 import Polaroid from "@/components/polaroid";
 import { client, sanityFetch } from "@/sanity/lib/client";
-import { SanityDocument } from "next-sanity";
+
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { SanityDocument } from "next-sanity";
 
 const builder = imageUrlBuilder(client);
 
@@ -27,7 +28,7 @@ export default async function Page() {
         lg:grid-cols-4
         xl:grid-cols-5"
       >
-        {posts.map((post) => {
+        {posts.map((post: SanityDocument) => {
           // Add null check for mainImage
           const imageUrl = post.mainImage
             ? urlFor(post.mainImage).width(400).height(500).url()
