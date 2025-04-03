@@ -1,14 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-interface PolaroidProps {
+interface StampProps {
   title: string;
   image: string;
   link: string;
 }
 
-export default function Stamp({ image, link }: PolaroidProps) {
-  console.log("new polaroid");
-  console.log(image);
+export default function Stamp({ image, link }: StampProps) {
   return (
     <div className="relative place-self-center">
       <Link href={`/work/${link}`}>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+
 interface PolaroidProps {
   title: string;
   image: string;
@@ -31,18 +32,17 @@ export default function Polaroid({
       </Link>
       <div
         className="absolute z-30 inset-x-0 text-center text-black
-        bottom-1/12 w-full text-2xl
+        bottom-1/12 w-full text-2xl border-red px-5 font-[Caveat] font-bold
         sm:bottom-1/17
         md:bottom-1/20
         lg:text-xl lg:bottom-1/17
-        xl:bottom-1/12
-        "
+        2xl:bottom-1/20 "
       >
         {title}
       </div>
       <div
         className="absolute z-30 top-0.5 left-3 text-center text-black
-         w-1/6 text-xs font-thin
+         w-1/6 text-xs
         sm:
         md:
         lg:
