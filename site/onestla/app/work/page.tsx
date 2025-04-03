@@ -15,7 +15,7 @@ export default async function Page() {
     *[_type == "portfolio"] {
     _id,
     title,
-      stamp,
+      stamp, slug
     }`;
   const posts = await sanityFetch<SanityDocument[]>({ query: BLOG_Q });
 
@@ -38,7 +38,7 @@ export default async function Page() {
               key={post._id}
               title={post.title}
               image={imageUrl ? imageUrl : ""}
-              category="test"
+              link={post.slug.current}
             />
           );
         })}

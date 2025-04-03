@@ -4,14 +4,20 @@ interface PolaroidProps {
   title: string;
   image: string;
   category: string;
+  link: string;
 }
 
-export default function Polaroid({ title, image, category }: PolaroidProps) {
+export default function Polaroid({
+  title,
+  image,
+  category,
+  link,
+}: PolaroidProps) {
   console.log("new polaroid");
   console.log(image);
   return (
     <div className="relative ">
-      <Link href={"/work/slug"}>
+      <Link href={`/blog/${link}`}>
         <Image
           className="absolute z-20"
           src="https://cdn.sanity.io/images/3r2xt54q/production/8c15feacec8dce141f05148d6d05a0fabc7121c6-735x893.png"

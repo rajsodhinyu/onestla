@@ -13,7 +13,7 @@ function urlFor(source: SanityImageSource) {
 export default async function Page() {
   const BLOG_Q = `
     *[_type == "post"] {
-          _id, title, mainImage, bigtag->{title}
+          _id, title, mainImage, bigtag->{title},slug
         }`;
   const posts = await sanityFetch<SanityDocument[]>({ query: BLOG_Q });
 
@@ -39,6 +39,7 @@ export default async function Page() {
               title={post.title}
               image={imageUrl}
               category={post.bigtag.title}
+              link={post.slug.current}
             />
           );
         })}
