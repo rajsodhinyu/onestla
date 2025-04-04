@@ -8,6 +8,7 @@ import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Link from "next/link";
+import { Slideshow } from "@/components/slideshow";
 
 const builder = imageUrlBuilder(client);
 function urlFor(source: SanityImageSource) {
@@ -35,7 +36,9 @@ const components: PortableTextComponents = {
   marks: {
     em: ({ children }) => <em className="">{children} </em>,
     strong: ({ children }) => (
-      <strong className="text-[#5E809C] italic">{children} </strong>
+      <strong className="text-[#5E809C] text-[1.125rem] italic font-[600]">
+        {children}{" "}
+      </strong>
     ),
     link: ({ children, value }) => {
       const rel = !value.href.startsWith("/")
@@ -64,7 +67,7 @@ export default async function Page({
     _id,
     body,
     title,
-    slideshow,
+    'slideshow': slideshow[]{asset->},
     mainImage{
       ...,
       ...asset-> {
@@ -82,14 +85,14 @@ export default async function Page({
   const posts = await sanityFetch<SanityDocument[]>({ query: SLUG_QUERY });
   const post = posts[0];
   const credits = post.credits;
-
+  const slideshow = post.slideshow;
   const date = new Date(post.publishedAt);
   const formattedDate = date.toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
     year: "numeric",
   });
-  console.log(formattedDate);
+
   return (
     <div className="p-4">
       <div id="splitpane" className="flex">
@@ -104,14 +107,15 @@ export default async function Page({
         </div>
         <div
           id="title-credits"
-          className="w-3/6 ml-3 flex flex-col text-[#5E809C] "
+          className="w-3/6 ml-3 flex flex-col text-[#5E809C]"
         >
-          <div className="text-center uppercase font-bold text-black">
-            {post.bigtag.title} • {formattedDate}
+          <div className="text-center text-xl uppercase font-bold text-black">
+            <span className="italic">{post.bigtag.title}</span> •{" "}
+            {formattedDate}
           </div>
           <div
             id="title"
-            className="text-7xl font-[Switzer] text-center font-bold italic mt-24 mb-auto"
+            className="text-9xl font-[Switzer] text-center font-bold italic mt-24 mb-auto"
           >
             {post.title}
           </div>
@@ -141,7 +145,6 @@ export default async function Page({
             alt={`${post.title}`}
             width={800}
             height={338}
-            layout="responsive"
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-2xl font-[Switzer] text-black italic text-center px-4">
@@ -155,6 +158,22 @@ export default async function Page({
           <PortableText value={post.body} components={components} />
         </div>
       </div>
+      {/* <div id="slideshow" className="grid my-10 grid-cols-4 gap-4 items-center">
+        {slideshow.map((slide: SanityDocument) => (
+          <Image
+            key={slide.asset._id}
+            className="border-[#5E809C] rounded-md hover:drop-shadow-xl"
+            src={urlFor(slide).url()}
+            alt={slide.asset.url}
+            width={slide.asset.metadata.dimensions.width}
+            height={slide.asset.metadata.dimensions.height}
+            sizes=""
+          />
+        ))}
+      </div>
+       */}
+
+      <Slideshow slideshow={slideshow} />
     </div>
   );
 }
