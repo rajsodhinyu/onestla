@@ -41,7 +41,7 @@ export default async function Page({
 
   const posts = await sanityFetch<SanityDocument[]>({ query: SLUG_QUERY });
   const post = posts[0];
-  console.log(post);
+  // console.log(post);
   console.log(post.mainImage.metadata.dimensions.width);
 
   return (
