@@ -4,5 +4,6 @@ import post from './post'
 import author from './author'
 import portfolio from './portfolio'
 import portfoliotag from './portfoliotag'
+import about from './about'
 
-export const schemaTypes = [post, portfolio, author, blogtag, portfoliotag, blockContent]
+export const schemaTypes = [post, portfolio, about, author, blogtag, portfoliotag, blockContent]

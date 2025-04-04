@@ -11,4 +11,9 @@ export const structure: StructureResolver = (S) =>
       S.divider(),
       S.documentTypeListItem('author').title('Credits').icon(FaHeadSideVirus),
       S.documentTypeListItem('blogtag').title('Categories and Tags').icon(FaTag),
+      S.listItem()
+        .id('about-page-list')
+        .schemaType('about')
+        .title('Mission Statement')
+        .child(S.editor().id('about-page').schemaType('about').documentId('aboutpage')),
     ])

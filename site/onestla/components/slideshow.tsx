@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
@@ -17,6 +17,31 @@ export const Slideshow = ({
   }[];
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const nextIndex = (currentIndex + 1) % slideshow.length;
+    const prevIndex =
+      currentIndex === 0 ? slideshow.length - 1 : currentIndex - 1;
+
+    const preloadImage = (index: number) => {
+      <Image
+        src={urlFor(slideshow[index])
+          .width(800)
+          .quality(80) // Adjust quality
+          .format("webp") // Use modern format
+          .url()}
+        alt="Slideshow Image"
+        fill
+        className="object-contain"
+        sizes="800px"
+        priority={currentIndex === 0} // Prioritize first image
+        loading="eager"
+      />;
+    };
+
+    preloadImage(nextIndex);
+    preloadImage(prevIndex);
+  }, [currentIndex, slideshow]);
 
   function urlFor(source: SanityImageSource) {
     return builder.image(source);
@@ -54,11 +79,17 @@ export const Slideshow = ({
       </button>
       <div className="w-[800px] h-[500px] relative">
         <Image
-          src={urlFor(slideshow[currentIndex]).url()}
+          src={urlFor(slideshow[currentIndex])
+            .width(800)
+            .quality(80) // Adjust quality
+            .format("webp") // Use modern format
+            .url()}
           alt="Slideshow Image"
           fill
           className="object-contain"
           sizes="800px"
+          priority={currentIndex === 0} // Prioritize first image
+          loading="eager"
         />
       </div>
     </div>
