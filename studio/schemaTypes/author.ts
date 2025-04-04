@@ -20,6 +20,7 @@ export default defineType({
       name: 'link',
       title: 'Link',
       type: 'url',
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {
