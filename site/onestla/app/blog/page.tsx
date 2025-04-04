@@ -11,6 +11,8 @@ function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }
 
+
+
 export default async function Page() {
   const BLOG_Q = `
     *[_type == "post"] {
@@ -20,7 +22,6 @@ export default async function Page() {
 
   return (
     <div>
-      <h2 className="text-center">On Est Là Blog</h2>
       <div
         className="grid grid-cols-1 justify-items-center mx-12 gap-4
         sm:grid-cols-2
@@ -33,7 +34,6 @@ export default async function Page() {
           const imageUrl = post.mainImage
             ? urlFor(post.mainImage).width(400).height(500).url()
             : "";
-
           return (
             <Polaroid
               key={post._id}

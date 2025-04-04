@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Nav() {
   return (
-    <div className="text-left *:m-3 justify-between flex w-max">
+    <div className="text-left *:m-3 justify-between flex sm:w-max">
       <Link href={"/"} className="text-center">
         <Image
           className="w-50"

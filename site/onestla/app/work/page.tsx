@@ -21,7 +21,6 @@ export default async function Page() {
 
   return (
     <div>
-      <h2 className="text-center">Work from On Est Là</h2>
       <div
         className="grid grid-cols-1 mx-12 gap-4
         sm:grid-cols-2
