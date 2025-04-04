@@ -23,5 +23,26 @@ export default defineType({
       title: 'About statement',
       type: 'blockContent',
     }),
+    defineField({
+      name: 'iglink',
+      title: 'Instagram Link',
+      initialValue: 'https://www.instagram.com/',
+      type: 'url',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'email',
+      title: 'email',
+      description: 'paste email',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'twitterlink',
+      title: 'X Link',
+      initialValue: 'https://www.x.com/:',
+      type: 'url',
+      validation: (rule) => rule.required(),
+    }),
   ],
 })

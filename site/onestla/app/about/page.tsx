@@ -5,6 +5,7 @@ import {
   SanityDocument,
 } from "next-sanity";
 import Image from "next/image";
+import Link from "next/link";
 
 const components: PortableTextComponents = {
   block: {
@@ -55,7 +56,10 @@ console.log(data);
 export default async function Page() {
   return (
     <div className="mx-4">
-      <div id="title" className="text-7xl font-bold italic w-full text-center">
+      <div
+        id="title"
+        className="text-7xl font-bold italic w-full text-center my-12"
+      >
         {post.title}
       </div>
       <div id="subheader" className="relative w-full ">
@@ -68,9 +72,16 @@ export default async function Page() {
             height={338}
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-lg font-[Switzer] font-[600] text-black italic text-left mx-12">
+            <div className="text-base font-[Switzer] font-[600] text-black italic text-left mx-12 -mt-18">
               <PortableText value={post.body} components={components} />
             </div>
+          </div>
+          <div className="relative w-full flex justify-around font-bold italic text-3xl text-[#5E809C]">
+            <Link href={`${post.iglink}`}>Instagram</Link>
+            <br></br>
+            <Link href={`mailto:${post.email}`}>Email</Link>
+            <br></br>
+            <Link href={`${post.twitterlink}`}>X</Link>
           </div>
         </div>
       </div>
