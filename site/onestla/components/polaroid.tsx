@@ -33,16 +33,16 @@ export default function Polaroid({
       <div
         className="absolute z-30 inset-x-0 text-black
          w-full border-red px-5 font-[Caveat] font-bold
-        bottom-[4%]
-        text-justify
-        sm:text-2xl
-        md:text-xl
+        bottom-[4%] text-center
+        sm:text-justify
+        text-3xl
+        sm:text-xl
         2xl:text-2xl"
       >
         {title}
       </div>
       <div
-        className="absolute z-30 top-0.5 left-3 text-center font-bold w-1/6 text-xs italic font-[Caveat]
+        className="absolute z-30 top-0.5 left-3 text-center font-bold w-1/6 text-xl sm:text-xs italic font-[Caveat]
         "
       >
         {category}
