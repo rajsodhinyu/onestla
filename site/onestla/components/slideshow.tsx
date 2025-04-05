@@ -67,13 +67,13 @@ export const Slideshow = ({
     <div className="h-[600px] w-full  relative flex items-center justify-center rounded-sm">
       <button
         onClick={goToPrevious}
-        className="absolute text-3xl left-4 top-1/2 -translate-y-1/2 z-10 italic font-bold font-[Switzer] uppercase p-2  text-white rounded hover:bg-[#5E809C]"
+        className="absolute text-3xl left-4 bottom-8 -translate-y-1/2 z-10 italic font-bold font-[Switzer] uppercase p-2  text-white rounded hover:bg-[#5E809C]"
       >
-        Backward
+        Backward!
       </button>
       <button
         onClick={goToNext}
-        className="absolute text-3xl right-4 top-1/2 -translate-y-1/2 z-10 italic font-bold font-[Switzer] uppercase p-2  text-white rounded hover:bg-[#5E809C]"
+        className="absolute text-3xl right-4 bottom-8 -translate-y-1/2 z-10 italic font-bold font-[Switzer] uppercase p-2  text-white rounded hover:bg-[#5E809C]"
       >
         Onward!
       </button>

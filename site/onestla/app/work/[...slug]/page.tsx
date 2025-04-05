@@ -87,10 +87,10 @@ export default async function Page({
 
   return (
     <div className="">
-      <div className="text-left text-[#2B4C37] uppercase text-6xl p-4 font-bold italic">
+      <div className="text-left text-[#5E809C] uppercase text-6xl p-4 font-bold italic">
         {post.title}
       </div>
-      <div className="bg-[#484641] mx-80">
+      <div className="">
         <Image
           className="flex justify-self-center"
           src={urlFor(post.mainImage).url()}
@@ -99,13 +99,19 @@ export default async function Page({
           height={500}
         />
       </div>
-      <div id="split-pane-portfolio-writeup" className="flex justify-evenly">
-        <div id="slideshow-portfolio" className="w-3/6 text-center">
+      <div
+        id="split-pane-portfolio-writeup"
+        className="flex justify-evenly p-14"
+      >
+        <div
+          id="slideshow-portfolio"
+          className=" w-3/6 text-center bg-[#5E809C] rounded-lg"
+        >
           <Slideshow slideshow={slideshow} />
         </div>
         <div
           id="Writeup"
-          className="w-3/6 text-center text-5xl font-[Switzer] font-bold italic flex flex-col h-[500px] px-12 items-center justify-center "
+          className="w-3/6 text-center text-6xl font-bold italic flex flex-col h-[500px] px-12 items-center justify-center font-[Caveat]"
         >
           <PortableText value={post.body} components={components} />
         </div>

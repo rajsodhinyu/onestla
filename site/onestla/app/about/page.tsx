@@ -11,7 +11,11 @@ const components: PortableTextComponents = {
   block: {
     // Ex. 1: customizing common block types
     h1: ({ children }) => <h1 className="">{children}</h1>,
-    normal: ({ children }) => <p className="">{children}</p>,
+    normal: ({ children }) => (
+      <p className="">
+        {children} <br></br>
+      </p>
+    ),
   },
   list: {
     // Ex. 1: customizing common list types
@@ -57,7 +61,7 @@ export default async function Page() {
       <div id="subheader" className="relative w-full ">
         <div id="paper-tear" className="relative">
           <Image
-            className="lg:inline-block hidden w-full h-auto"
+            className=" w-full h-auto"
             src="https://cdn.sanity.io/images/3r2xt54q/production/0bded1f7582b0f578676bafb82bfa0b8a446fa68-800x1188.png"
             alt={`memo`}
             width={800}
@@ -67,22 +71,31 @@ export default async function Page() {
             {/* Content area with top padding */}
             <div
               id="title"
-              className="text-7xl font-bold italic w-full text-center my-12"
+              className="text-7xl font-bold italic w-full text-center mt-12 text-gray-800 text-[4vw]"
             >
               {post.title}
             </div>
-            <div className="pt-24 px-12">
-              <div className="text-5xl font-[Switzer] font-medium mx-8 text-black italic text-left">
+            <div className="pt-12 px-12">
+              <div
+                className="font-[Switzer] font-medium mx-8 text-gray-800 italic leading-snug text-pretty text-left
+                text-[2vw]"
+              >
                 <PortableText value={post.body} components={components} />
               </div>
             </div>
 
             {/* Social links fixed to bottom */}
             <div className="absolute bottom-8 left-0 right-0">
-              <div className="flex justify-around font-bold italic text-3xl text-[#5E809C]">
+              <div className="flex justify-around font-bold italic underline  text-3xl text-[#5E809C]">
                 <Link href={`${post.iglink}`}>Instagram</Link>
                 <Link href={`mailto:${post.email}`}>Email</Link>
                 <Link href={`${post.twitterlink}`}>X</Link>
+              </div>
+              <div
+                id="title"
+                className="text-2xl font- italic w-full text-center my-12 text-[#5E809C]"
+              >
+                On Est Là 2025
               </div>
             </div>
           </div>
