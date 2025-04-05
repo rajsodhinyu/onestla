@@ -14,7 +14,7 @@ export default function Page() {
         </div>
         {/* Top part of envelope */}
         <div className="bg-[#f5f5dc] absolute z-10 top-0 left-0 right-0 h-[15%] border-blue-600 border-0 rounded-t-lg justify-between flex flex-wrap lg:flex-nowrap items-center text-[#671E1E]">
-          <div className="text-7xl mt-10 sm:mt-[5%] md:mt-8 sm:text-[10vh] font-[800] italic self-center font-[Switzer] tracking-wide ml-8 ">
+          <div className="text-[12vw] mt-10 sm:mt-[5%] md:mt-8 sm:text-[10vh] font-[800] italic self-center font-[Switzer] tracking-wide ml-8 ">
             on est là
           </div>
           <div className="*:mx-2 align-middle items-center flex max-sm:mt-10">
@@ -29,7 +29,7 @@ export default function Page() {
             </Link>
             <Link href={"/work"} className="text-center">
               <Image
-                className="h-[11vh] w-auto"
+                className="h-[11vh] w-auto "
                 src="https://cdn.sanity.io/images/3r2xt54q/production/210ed14a45a5fa5b1034fa10ac318da02a3ec3af-690x540.png"
                 alt="work-stamp"
                 width={690}
@@ -38,7 +38,7 @@ export default function Page() {
             </Link>
             <Link href={"/about"} className="text-center">
               <Image
-                className="h-[11vh] w-auto"
+                className="h-[11vh] w-auto "
                 src="https://cdn.sanity.io/images/3r2xt54q/production/63b854ea75268b0aa674aaf6a9bbd820e8de012d-494x552.png"
                 alt="about-stamp"
                 width={494}

@@ -155,7 +155,7 @@ export default async function Page({
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <div
-              className=" font-[Switzer] text-black  italic text-center px-4
+              className=" font-[Switzer] font-[500] text-black  text-center px-4
               text-[2vw]
               "
             >
