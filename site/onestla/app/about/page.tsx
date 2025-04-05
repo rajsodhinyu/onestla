@@ -30,9 +30,7 @@ const components: PortableTextComponents = {
   marks: {
     em: ({ children }) => <em className="">{children} </em>,
     strong: ({ children }) => (
-      <strong className="text-[#5E809C] text-[1.125rem] italic font-[600]">
-        {children}{" "}
-      </strong>
+      <strong className="text-[#5E809C] italic font-[600]">{children} </strong>
     ),
     link: ({ children, value }) => {
       const rel = !value.href.startsWith("/")
@@ -51,37 +49,42 @@ const data = await sanityFetch<SanityDocument[]>({
   *[_id == "aboutpage"]`,
 });
 const post = data[0];
-console.log(data);
+//console.log(data);
 
 export default async function Page() {
   return (
     <div className="mx-4">
-      <div
-        id="title"
-        className="text-7xl font-bold italic w-full text-center my-12"
-      >
-        {post.title}
-      </div>
       <div id="subheader" className="relative w-full ">
         <div id="paper-tear" className="relative">
           <Image
-            className="w-full h-auto"
-            src="https://cdn.sanity.io/images/3r2xt54q/production/df27f9bb5522717ecb6948e25668aed43af904bb-800x208.png"
-            alt={`tear`}
+            className="lg:inline-block hidden w-full h-auto"
+            src="https://cdn.sanity.io/images/3r2xt54q/production/0bded1f7582b0f578676bafb82bfa0b8a446fa68-800x1188.png"
+            alt={`memo`}
             width={800}
             height={338}
           />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-base font-[Switzer] font-[600] text-black italic text-left mx-12 -mt-18">
-              <PortableText value={post.body} components={components} />
+          <div className="absolute inset-0 flex flex-col">
+            {/* Content area with top padding */}
+            <div
+              id="title"
+              className="text-7xl font-bold italic w-full text-center my-12"
+            >
+              {post.title}
             </div>
-          </div>
-          <div className="relative w-full flex justify-around font-bold italic text-3xl text-[#5E809C]">
-            <Link href={`${post.iglink}`}>Instagram</Link>
-            <br></br>
-            <Link href={`mailto:${post.email}`}>Email</Link>
-            <br></br>
-            <Link href={`${post.twitterlink}`}>X</Link>
+            <div className="pt-24 px-12">
+              <div className="text-5xl font-[Switzer] font-medium mx-8 text-black italic text-left">
+                <PortableText value={post.body} components={components} />
+              </div>
+            </div>
+
+            {/* Social links fixed to bottom */}
+            <div className="absolute bottom-8 left-0 right-0">
+              <div className="flex justify-around font-bold italic text-3xl text-[#5E809C]">
+                <Link href={`${post.iglink}`}>Instagram</Link>
+                <Link href={`mailto:${post.email}`}>Email</Link>
+                <Link href={`${post.twitterlink}`}>X</Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

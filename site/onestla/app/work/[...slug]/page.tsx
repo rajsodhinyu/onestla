@@ -83,7 +83,7 @@ export default async function Page({
   const posts = await sanityFetch<SanityDocument[]>({ query: SLUG_QUERY });
   const post = posts[0];
   const slideshow = post.slideshow;
-  console.log(post.mainImage.metadata.dimensions.width);
+  //console.log(post.mainImage.metadata.dimensions.width);
 
   return (
     <div className="">

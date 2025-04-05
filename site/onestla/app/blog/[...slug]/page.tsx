@@ -156,12 +156,7 @@ export default async function Page({
           <div className="absolute inset-0 flex items-center justify-center">
             <div
               className=" font-[Switzer] text-black  italic text-center px-4
-              text-xs
-              sm:text-
-              md:text-
-              lg:text-
-              xl:text-
-
+              text-[2vw]
               "
             >
               <PortableText value={post.subtitle} components={components} />
