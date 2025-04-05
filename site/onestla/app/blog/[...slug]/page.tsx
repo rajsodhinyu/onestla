@@ -115,7 +115,14 @@ export default async function Page({
           </div>
           <div
             id="title"
-            className="text-9xl font-[Switzer] text-center font-bold italic mt-24 mb-auto"
+            className="font-[Switzer] text-center font-bold italic
+
+            mt-auto mb-auto flex
+            text-3xl
+            sm:text-4xl
+            md:text-5xl
+            lg:text-6xl
+            xl:text-8xl"
           >
             {post.title}
           </div>
@@ -147,14 +154,27 @@ export default async function Page({
             height={338}
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-2xl font-[Switzer] text-black italic text-center px-4">
+            <div
+              className=" font-[Switzer] text-black  italic text-center px-4
+              text-xs
+              sm:text-
+              md:text-
+              lg:text-
+              xl:text-
+
+              "
+            >
               <PortableText value={post.subtitle} components={components} />
             </div>
           </div>
         </div>
       </div>
       <div className="inset-0 flex items-center justify-center">
-        <div className="text-lg font-[Switzer] text-white font-light -ml-6">
+        <div
+          className="font-[Switzer] text-white font-light -ml-6
+          text-lg
+          "
+        >
           <PortableText value={post.body} components={components} />
         </div>
       </div>
