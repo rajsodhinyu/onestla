@@ -11,20 +11,18 @@ function urlFor(source: SanityImageSource) {
 }
 
 export default async function Page() {
-  const BLOG_Q = `
-    *[_type == "portfolio"] {
-    _id,
-    title,
-      stamp, slug
-    }`;
+  const BLOG_Q = `*[_type == "portfolio"] | order(publishedAt desc){
+      _id,
+      title,
+        stamp, slug
+      }`;
   const posts = await sanityFetch<SanityDocument[]>({ query: BLOG_Q });
 
   return (
     <div>
       <div
-        className="grid grid-cols-1 mx-12 gap-4
-        sm:grid-cols-2
-        md:grid-cols-3
+        className="grid mx-12 gap-4
+        grid-cols-3
         lg:grid-cols-4
         xl:grid-cols-5"
       >

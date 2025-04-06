@@ -12,7 +12,7 @@ export default function SimpleCollagePage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
-  const [position, setPosition] = useState({ x: -1150, y: -1150 });
+  const [position, setPosition] = useState({ x: -650, y: -860 });
 
   // Calculate boundaries based on container and image dimensions
   const getBoundaries = () => {

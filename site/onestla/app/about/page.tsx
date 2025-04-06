@@ -65,6 +65,7 @@ export default async function Page() {
             src="https://cdn.sanity.io/images/3r2xt54q/production/0bded1f7582b0f578676bafb82bfa0b8a446fa68-800x1188.png"
             alt={`memo`}
             width={800}
+            priority
             height={338}
           />
           <div className="absolute inset-0 flex flex-col">

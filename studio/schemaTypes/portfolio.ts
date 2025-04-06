@@ -77,7 +77,7 @@ export default defineType({
     defineField({
       name: 'slug',
       title: 'URL',
-      description: 'onestla.co/work/...',
+      description: 'oel.world/work/...',
       type: 'slug',
       options: {
         source: 'title',
@@ -89,6 +89,7 @@ export default defineType({
     defineField({
       name: 'publishedAt',
       title: 'Date',
+      description: 'Use this date to order the stamps on oel.world/work',
       type: 'date',
       options: {
         dateFormat: 'D MMMM YYYY',

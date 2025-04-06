@@ -65,6 +65,7 @@ export default async function Page({
       worktype,
       title,
       body,
+      stamp,
     mainImage{
       ...,
       ...asset-> {
@@ -87,8 +88,10 @@ export default async function Page({
 
   return (
     <div className="">
-      <div className="text-left text-[#5E809C] uppercase text-6xl p-4 font-bold italic">
-        {post.title}
+      <div className="flex-wrap flex w-full">
+        <div className="sm:text-left w-full text-center text-[#5E809C] text-[10vw] p-4 font-bold italic flex">
+          {post.title}
+        </div>
       </div>
       <div className="">
         <Image
@@ -97,21 +100,22 @@ export default async function Page({
           alt={`${post.title}`}
           width={500}
           height={500}
+          priority
         />
       </div>
       <div
         id="split-pane-portfolio-writeup"
-        className="flex justify-evenly p-14"
+        className="flex justify-evenly p-14 flex-wrap-reverse sm:flex-nowrap"
       >
         <div
           id="slideshow-portfolio"
-          className=" w-3/6 text-center bg-[#5E809C] rounded-lg"
+          className="sm:w-3/6 sm:h-3/6 w-full text-center bg-[url(https://cdn.sanity.io/images/3r2xt54q/production/edc41e8820eca1daea8dfb9badeeab0c56745164-1000x538.png)] rounded-lg sm:mx-0"
         >
           <Slideshow slideshow={slideshow} />
         </div>
         <div
           id="Writeup"
-          className="w-3/6 text-center text-6xl font-bold italic flex flex-col h-[500px] px-12 items-center justify-center font-[Caveat]"
+          className="text-center text-xl sm:text-3xl font-bold italic flex flex-col mb-14 sm:mb-0 sm:h-[500px] px-12 items-center justify-center font-[Caveat] text-white"
         >
           <PortableText value={post.body} components={components} />
         </div>

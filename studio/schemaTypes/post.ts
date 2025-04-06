@@ -82,7 +82,7 @@ export default defineType({
     defineField({
       name: 'slug',
       title: 'Slug (must be unique)',
-      description: 'onestla.co/blog/...',
+      description: 'oel.world/blog/...',
       type: 'slug',
       options: {
         source: 'title',

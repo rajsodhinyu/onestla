@@ -101,6 +101,7 @@ export default async function Page({
             className="justify-self-center "
             src={urlFor(post.mainImage).url()}
             alt={`${post.title}`}
+            priority
             width={post.mainImage.metadata.dimensions.width}
             height={post.mainImage.metadata.dimensions.height}
           />
@@ -173,22 +174,12 @@ export default async function Page({
           <PortableText value={post.body} components={components} />
         </div>
       </div>
-      {/* <div id="slideshow" className="grid my-10 grid-cols-4 gap-4 items-center">
-        {slideshow.map((slide: SanityDocument) => (
-          <Image
-            key={slide.asset._id}
-            className="border-[#5E809C] rounded-md hover:drop-shadow-xl"
-            src={urlFor(slide).url()}
-            alt={slide.asset.url}
-            width={slide.asset.metadata.dimensions.width}
-            height={slide.asset.metadata.dimensions.height}
-            sizes=""
-          />
-        ))}
+      <div
+        id="slideshow-portfolio"
+        className="w-full text-center bg-[url(https://cdn.sanity.io/images/3r2xt54q/production/edc41e8820eca1daea8dfb9badeeab0c56745164-1000x538.png)] rounded-sm "
+      >
+        <Slideshow slideshow={slideshow} />
       </div>
-       */}
-
-      <Slideshow slideshow={slideshow} />
     </div>
   );
 }

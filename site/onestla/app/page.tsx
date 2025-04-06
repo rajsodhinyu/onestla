@@ -20,7 +20,7 @@ export default function Page() {
           <div className="*:mx-2 align-middle items-center flex max-sm:mt-10">
             <Link href={"/blog"} className="text-center">
               <Image
-                className="h-[11vh] w-auto"
+                className="h-[10vh] w-auto"
                 src="https://cdn.sanity.io/images/3r2xt54q/production/17528ae862e466a9c59fc5d847a837bc908b3427-619x521.png"
                 alt="blog-stamp"
                 width={619}
@@ -29,7 +29,7 @@ export default function Page() {
             </Link>
             <Link href={"/work"} className="text-center">
               <Image
-                className="h-[11vh] w-auto "
+                className="h-[10vh] w-auto "
                 src="https://cdn.sanity.io/images/3r2xt54q/production/210ed14a45a5fa5b1034fa10ac318da02a3ec3af-690x540.png"
                 alt="work-stamp"
                 width={690}
@@ -38,7 +38,7 @@ export default function Page() {
             </Link>
             <Link href={"/about"} className="text-center">
               <Image
-                className="h-[11vh] w-auto "
+                className="h-[10vh] w-auto "
                 src="https://cdn.sanity.io/images/3r2xt54q/production/63b854ea75268b0aa674aaf6a9bbd820e8de012d-494x552.png"
                 alt="about-stamp"
                 width={494}
