@@ -57,7 +57,7 @@ const post = data[0];
 
 export default async function Page() {
   return (
-    <div className="mx-4">
+    <div className="mx-4 min-w-[300px]">
       <div id="subheader" className="relative w-full ">
         <div id="paper-tear" className="relative">
           <Image
@@ -76,9 +76,9 @@ export default async function Page() {
             >
               {post.title}
             </div>
-            <div className="pt-12 px-12">
+            <div className="sm:pt-12 pt-6 px-12">
               <div
-                className="font-[Switzer] font-medium mx-8 text-gray-800 italic leading-snug text-pretty text-left
+                className="font-[Switzer] font-medium sm:mx-8 text-gray-800 italic leading-snug text-pretty text-left
                 text-[2vw]"
               >
                 <PortableText value={post.body} components={components} />
@@ -86,17 +86,22 @@ export default async function Page() {
             </div>
 
             {/* Social links fixed to bottom */}
-            <div className="absolute bottom-8 left-0 right-0">
-              <div className="flex justify-around font-bold italic underline  text-3xl text-[#5E809C]">
+            <div className="absolute bottom-0 md:bottom-8 left-0 right-0">
+              <div className="flex justify-around font-bold italic underline text-xl text-[#5E809C] mb-6">
                 <Link href={`${post.iglink}`}>Instagram</Link>
                 <Link href={`mailto:${post.email}`}>Email</Link>
+                <Link
+                  href={`https://www.tiktok.com/@onestla.world?_t=ZT-8vL95WVDwre&_r=1`}
+                >
+                  Tiktok
+                </Link>
                 <Link href={`${post.twitterlink}`}>X</Link>
               </div>
               <div
                 id="title"
-                className="text-2xl font- italic w-full text-center my-12 text-[#5E809C]"
+                className="text-2xl font-bold italic w-full text-center mb-5 sm:mb-12 text-[#5E809C]"
               >
-                On Est Là 2025
+                On Est Là
               </div>
             </div>
           </div>

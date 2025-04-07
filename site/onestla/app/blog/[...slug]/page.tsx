@@ -23,7 +23,9 @@ const components: PortableTextComponents = {
   },
   list: {
     // Ex. 1: customizing common list types
-    bullet: ({ children }) => <ul className="mt-xl pl-8">{children}</ul>,
+    bullet: ({ children }) => (
+      <ul className="mt-xl pl-5 sm:pl-8">{children}</ul>
+    ),
     number: ({ children }) => <ol className="mt-lg">{children}</ol>,
   },
   listItem: {
@@ -94,7 +96,7 @@ export default async function Page({
   });
 
   return (
-    <div className="p-4">
+    <div className="mx-4">
       <div id="splitpane" className="flex">
         <div id="mainImage" className="w-3/6">
           <Image
@@ -110,7 +112,7 @@ export default async function Page({
           id="title-credits"
           className="w-3/6 ml-3 flex flex-col text-[#5E809C]"
         >
-          <div className="text-center text-xl uppercase font-bold text-black">
+          <div className="text-center text-[3vw] sm:text-xl uppercase font-bold text-black">
             <span className="italic">{post.bigtag.title}</span> •{" "}
             {formattedDate}
           </div>
@@ -119,7 +121,7 @@ export default async function Page({
             className="font-[Switzer] text-center font-bold italic
 
             mt-auto mb-auto flex
-            text-3xl
+            text-[3vh]
             sm:text-4xl
             md:text-5xl
             lg:text-6xl
@@ -131,11 +133,11 @@ export default async function Page({
             <tbody>
               {credits.map((credit: SanityDocument) => (
                 <tr key={`${credit.role} - ${credit.name}`}>
-                  <td className="uppercase font-[Switzer] text-xl tracking-tight w-1/4 text-left pr-2 text-black">
+                  <td className="uppercase font-[Switzer] text-[3vw] sm:text-xl tracking-tight w-1/4 text-left pr-2 text-black">
                     {credit.role}
                   </td>
                   <td className="text-left pl-4">
-                    <em className="not-italic  font-black text-2xl tracking-normal font-[Caveat]">
+                    <em className="not-italic font-black text-[4vw] sm:text-2xl tracking-normal font-[Caveat]">
                       <Link href={`${credit.link}`}>{credit.name}</Link>
                     </em>
                   </td>
@@ -156,7 +158,7 @@ export default async function Page({
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <div
-              className=" font-[Switzer] font-[500] text-black  text-center px-4
+              className=" font-[Switzer] font-[500] text-black text-center px-4
               text-[2vw]
               "
             >
@@ -165,10 +167,10 @@ export default async function Page({
           </div>
         </div>
       </div>
-      <div className="inset-0 flex items-center justify-center">
+      <div className="inset-0  items-center justify-center">
         <div
           className="font-[Switzer] text-white font-light -ml-6
-          text-lg
+          text-base
           "
         >
           <PortableText value={post.body} components={components} />
@@ -176,7 +178,7 @@ export default async function Page({
       </div>
       <div
         id="slideshow-portfolio"
-        className="w-full text-center bg-[url(https://cdn.sanity.io/images/3r2xt54q/production/edc41e8820eca1daea8dfb9badeeab0c56745164-1000x538.png)] rounded-sm "
+        className="w-full text-center bg-[url(https://cdn.sanity.io/images/3r2xt54q/production/edc41e8820eca1daea8dfb9badeeab0c56745164-1000x538.png)] my-10 rounded-sm "
       >
         <Slideshow slideshow={slideshow} />
       </div>

@@ -21,7 +21,7 @@ export default async function Page() {
   return (
     <div>
       <div
-        className="grid mx-12 gap-4
+        className="border-4 rounded-lg border-gray-400 grid mx-12 gap-4
         grid-cols-3
         lg:grid-cols-4
         xl:grid-cols-5"

@@ -29,7 +29,7 @@ export const Slideshow = ({
           .width(800)
           .quality(80) // Adjust quality
           .format("webp") // Use modern format
-          .url()}
+          ?.url()}
         alt="Slideshow Image"
         fill
         className="object-contain"

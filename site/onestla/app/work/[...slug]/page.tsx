@@ -5,6 +5,7 @@ import {
   SanityDocument,
 } from "next-sanity";
 import Image from "next/image";
+import Link from "next/link";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { Slideshow } from "@/components/slideshow";
@@ -59,7 +60,8 @@ export default async function Page({
   const slug = (await params).slug;
   const SLUG_QUERY = `*[_type == "portfolio" && slug.current == "${slug}"] {
     'slideshow': images[]{asset->},
-    credits,
+    'credits': credits[]->{name, role, link},
+    'streets': worktype[]->{title},
       slideshow_bool,
       publishedAt,
       worktype,
@@ -85,11 +87,12 @@ export default async function Page({
   const post = posts[0];
   const slideshow = post.slideshow;
   //console.log(post.mainImage.metadata.dimensions.width);
-
+  const credits = post.credits;
+  const streets = post.streets;
   return (
     <div className="">
-      <div className="flex-wrap flex w-full">
-        <div className="sm:text-left w-full text-center text-[#5E809C] text-[10vw] p-4 font-bold italic flex">
+      <div className="flex w-full">
+        <div className="w-full text-center text-[#5E809C] text-[8vw] p-4 font-bold italic leading-none border-red-900">
           {post.title}
         </div>
       </div>
@@ -103,9 +106,19 @@ export default async function Page({
           priority
         />
       </div>
+      <div className="w-full overflow-x-scroll flex justify-around gap-4 mt-10 ml-3">
+        {streets.map((credit: SanityDocument) => (
+          <div
+            key={credit.title}
+            className="h-auto text-center w-fit border-2 border-white drop-shadow-lg tracking-wider text-3xl rounded-xl text-nowrap uppercase p-3 bg-[#20365B] text-[#E2EEF3]  font-[Overpass] font-[600] pt-4"
+          >
+            {credit.title}
+          </div>
+        ))}
+      </div>
       <div
         id="split-pane-portfolio-writeup"
-        className="flex justify-evenly p-14 flex-wrap-reverse sm:flex-nowrap"
+        className="flex justify-evenly p-14 flex-wrap-reverse sm:flex-nowrap  border-red-900"
       >
         <div
           id="slideshow-portfolio"
@@ -113,11 +126,31 @@ export default async function Page({
         >
           <Slideshow slideshow={slideshow} />
         </div>
-        <div
-          id="Writeup"
-          className="text-center text-xl sm:text-3xl font-bold italic flex flex-col mb-14 sm:mb-0 sm:h-[500px] px-12 items-center justify-center font-[Caveat] text-white"
-        >
-          <PortableText value={post.body} components={components} />
+        <div className="sm:h-fill flex-col flex justify-around rounded-lg">
+          <div
+            id="Writeup"
+            className="text-center text-xl sm:text-3xl font-bold italic  mb-14 sm:mb-0  px-12 items-center justify-center font-[Caveat] text-white  border-blue-900"
+          >
+            <PortableText value={post.body} components={components} />
+          </div>
+          <div id="credits" className="mx-6  border-purple-900 mb-8 sm:mb-0">
+            <table className="w-fit">
+              <tbody>
+                {credits.map((credit: SanityDocument) => (
+                  <tr key={`${credit.role} - ${credit.name}`}>
+                    <td className="uppercase font-[Switzer]  text-[3vw] sm:text-xl tracking-tight w-2/4 text-left pr-2 text-white">
+                      {credit.role}
+                    </td>
+                    <td className="text-left pl-4">
+                      <em className="not-italic font-black text-[4vw] sm:text-2xl tracking-normal font-[Caveat] text-[#5E809C]">
+                        <Link href={`${credit.link}`}>{credit.name}</Link>
+                      </em>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
