@@ -88,8 +88,8 @@ export default async function Page() {
             {/* Social links fixed to bottom */}
             <div className="absolute bottom-0 md:bottom-8 left-0 right-0">
               <div className="flex justify-around font-bold italic underline text-xl text-[#5E809C] mb-6">
-                <Link href={`${post.iglink}`}>Instagram</Link>
                 <Link href={`mailto:${post.email}`}>Email</Link>
+                <Link href={`${post.iglink}`}>Instagram</Link>
                 <Link
                   href={`https://www.tiktok.com/@onestla.world?_t=ZT-8vL95WVDwre&_r=1`}
                 >
