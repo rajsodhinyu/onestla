@@ -92,13 +92,12 @@ export default async function Page({
   return (
     <div className="">
       <div className="flex w-full">
-        <div className="w-full text-center text-[#5E809C] text-[8vw] p-4 font-bold italic leading-none border-red-900">
+        <div className="w-full text-center text-[#5E809C] text-[6vw] p-4 font-bold italic leading-none">
           {post.title}
         </div>
       </div>
-      <div className="">
+      <div className="flex justify-center w-full">
         <Image
-          className="flex justify-self-center"
           src={urlFor(post.mainImage).url()}
           alt={`${post.title}`}
           width={500}
