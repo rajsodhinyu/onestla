@@ -14,8 +14,6 @@ export default function Polaroid({
   category,
   link,
 }: PolaroidProps) {
-  // console.log("new polaroid");
-  // console.log(image);
   return (
     <div className="relative ">
       <Link href={`/blog/${link}`}>

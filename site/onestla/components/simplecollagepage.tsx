@@ -14,7 +14,6 @@ export default function SimpleCollagePage() {
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
   const [position, setPosition] = useState({ x: -650, y: -860 });
 
-  // Calculate boundaries based on container and image dimensions
   const getBoundaries = () => {
     if (!containerRef.current) return { minX: 0, maxX: 0, minY: 0, maxY: 0 };
 
@@ -69,7 +68,6 @@ export default function SimpleCollagePage() {
     setIsDragging(false);
   };
 
-  // Constrain initial position only once on mount
   useEffect(() => {
     const constrained = constrainPosition(position.x, position.y);
     if (constrained.x !== position.x || constrained.y !== position.y) {
@@ -77,7 +75,6 @@ export default function SimpleCollagePage() {
     }
   }, [constrainPosition, position.x, position.y]);
 
-  // Set up event listeners
   useEffect(() => {
     const handleMouseMoveEvent = (e: MouseEvent | TouchEvent) =>
       handleMouseMove(e);

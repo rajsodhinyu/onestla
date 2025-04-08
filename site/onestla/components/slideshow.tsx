@@ -27,14 +27,14 @@ export const Slideshow = ({
       <Image
         src={urlFor(slideshow[index])
           .width(800)
-          .quality(80) // Adjust quality
-          .format("webp") // Use modern format
+          .quality(80)
+          .format("webp")
           ?.url()}
         alt="Slideshow Image"
         fill
         className="object-contain"
         sizes="800px"
-        priority={currentIndex === 0} // Prioritize first image
+        priority={currentIndex === 0}
         loading="eager"
       />;
     };
@@ -81,14 +81,14 @@ export const Slideshow = ({
         <Image
           src={urlFor(slideshow[currentIndex])
             .width(800)
-            .quality(100) // Adjust quality
-            .format("webp") // Use modern format
+            .quality(100)
+            .format("webp")
             .url()}
           alt="Slideshow Image"
           fill
           className="object-contain"
           sizes="800px"
-          priority={currentIndex === 0} // Prioritize first image
+          priority={currentIndex === 0}
           loading="eager"
         />
       </div>
