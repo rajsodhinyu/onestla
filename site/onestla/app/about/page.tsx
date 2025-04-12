@@ -90,9 +90,7 @@ export default async function Page() {
               <div className="flex justify-around font-bold italic underline text-xl text-[#5E809C] mb-6">
                 <Link href={`mailto:${post.email}`}>Email</Link>
                 <Link href={`${post.iglink}`}>Instagram</Link>
-                <Link
-                  href={`https://www.tiktok.com/@onestla.world?_t=ZT-8vL95WVDwre&_r=1`}
-                >
+                <Link href={`https://www.tiktok.com/@onestla_world`}>
                   Tiktok
                 </Link>
                 <Link href={`${post.twitterlink}`}>X</Link>

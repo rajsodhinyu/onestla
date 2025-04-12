@@ -101,7 +101,18 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
   ],
-
+  orderings: [
+    {
+      title: 'Publish Date (New)',
+      name: 'publishDesc',
+      by: [{field: 'publishedAt', direction: 'desc'}],
+    },
+    {
+      title: 'Publish Date (Old)',
+      name: 'publishAsc',
+      by: [{field: 'publishedAt', direction: 'asc'}],
+    },
+  ],
   preview: {
     select: {
       title: 'title',

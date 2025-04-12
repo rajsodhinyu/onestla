@@ -11,11 +11,9 @@ function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }
 
-
-
 export default async function Page() {
   const BLOG_Q = `
-    *[_type == "post"] {
+    *[_type == "post"] | order(publishedAt desc){
           _id, title, mainImage, bigtag->{title},slug
         }`;
   const posts = await sanityFetch<SanityDocument[]>({ query: BLOG_Q });
