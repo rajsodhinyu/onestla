@@ -18,10 +18,14 @@ function urlFor(source: SanityImageSource) {
 // Barebones lazy-loaded image component
 const SampleImageComponent = ({
   value,
-  isInline,
 }: {
-  value: any;
-  isInline: boolean;
+  value: {
+    asset: {
+      _ref: string;
+      _type: string;
+    };
+    alt?: string;
+  };
 }) => {
   const { width, height } = getImageDimensions(value);
   return (
