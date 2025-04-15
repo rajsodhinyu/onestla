@@ -23,9 +23,7 @@ const components: PortableTextComponents = {
   },
   list: {
     // Ex. 1: customizing common list types
-    bullet: ({ children }) => (
-      <ul className="mt-xl pl-5 sm:pl-8">{children}</ul>
-    ),
+    bullet: ({ children }) => <ul className="mt-xl pl-8">{children}</ul>,
     number: ({ children }) => <ol className="mt-lg">{children}</ol>,
   },
   listItem: {
@@ -169,7 +167,7 @@ export default async function Page({
       </div>
       <div className="inset-0  items-center justify-center">
         <div
-          className="font-[Switzer] text-white font-light -ml-6
+          className="font-[Switzer] text-white font-light pl-3
           text-base
           "
         >
