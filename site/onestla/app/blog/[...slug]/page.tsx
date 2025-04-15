@@ -9,13 +9,46 @@ import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Link from "next/link";
 import { Slideshow } from "@/components/slideshow";
+import { getImageDimensions } from "@sanity/asset-utils";
 
 const builder = imageUrlBuilder(client);
 function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }
+// Barebones lazy-loaded image component
+const SampleImageComponent = ({
+  value,
+  isInline,
+}: {
+  value: any;
+  isInline: boolean;
+}) => {
+  const { width, height } = getImageDimensions(value);
+  return (
+    <div className="m-4 flex justify-center">
+      <Image
+        className="h-1/2 w-auto "
+        src={urlFor(value).width(1000).fit("max").auto("format").url()}
+        alt={value.alt || " "}
+        width={width}
+        height={height}
+        style={{
+          // Display alongside text if image appears inside a block text span
+
+          // Avoid jumping around with aspect-ratio CSS property
+          aspectRatio: width / height,
+        }}
+      />
+    </div>
+  );
+};
 
 const components: PortableTextComponents = {
+  types: {
+    image: SampleImageComponent,
+    // Any other custom types you have in your content
+    // Examples: mapLocation, contactForm, code, featuredProjects, latestNews, etc.
+  },
   block: {
     // Ex. 1: customizing common block types
     h1: ({ children }) => <h1 className="">{children}</h1>,
